@@ -1,0 +1,1141 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/female.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/gui.gd" type="Script" id=2]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.8, 0.8, 0.8, 1 )
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 96, 96 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="Portrait" parent="Viewport" instance=ExtResource( 1 )]
+position = Vector2( 48, 48 )
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 444.0
+margin_bottom = 444.0
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="Panel" parent="Portrait"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.992
+margin_bottom = -2.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+margin_right = 314.0
+margin_bottom = 1159.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 5
+
+[node name="Body" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 102 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Body"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Face"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="LightSkin" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
+margin_top = 54.0
+margin_right = 314.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/LightSkin"]
+margin_top = 3.0
+margin_right = 128.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 128, 0 )
+text = "Light color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/LightSkin"]
+margin_left = 132.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkSkin" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
+margin_top = 78.0
+margin_right = 314.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/DarkSkin"]
+margin_top = 3.0
+margin_right = 128.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 128, 0 )
+text = "Dark color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Body/VBoxContainer/DarkSkin"]
+margin_left = 132.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="Mouth" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 314.0
+margin_bottom = 161.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Mouth"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Mouth/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Mouth"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Mouth/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Mouth/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Mouth/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Mouth/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Nose" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 166.0
+margin_right = 314.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Nose"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Nose/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Nose"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Nose/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Nose/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Nose/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Nose/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Cloths" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 225.0
+margin_right = 314.0
+margin_bottom = 423.0
+rect_min_size = Vector2( 0, 198 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Cloths"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="LightPrimary" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 54.0
+margin_right = 314.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightPrimary"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Light primary color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightPrimary"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkPrimary" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 78.0
+margin_right = 314.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkPrimary"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Dark primary color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkPrimary"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="LightSecondary" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 102.0
+margin_right = 314.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightSecondary"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Light secondary color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightSecondary"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkSecondary" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 126.0
+margin_right = 314.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkSecondary"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Dark secondary color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkSecondary"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="LightDetail" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 150.0
+margin_right = 314.0
+margin_bottom = 170.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightDetail"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Light detail color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightDetail"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkDetail" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer"]
+margin_top = 174.0
+margin_right = 314.0
+margin_bottom = 194.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkDetail"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Dark detail color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkDetail"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="Neck" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 428.0
+margin_right = 314.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 0, 82 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Neck"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Neck/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Necklace"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="Panel/ScrollContainer/VBoxContainer/Neck/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 42.0
+pressed = true
+text = "above cloths"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Neck/VBoxContainer"]
+margin_top = 46.0
+margin_right = 314.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Neck/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Neck/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Neck/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Eyes" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 515.0
+margin_right = 314.0
+margin_bottom = 667.0
+rect_min_size = Vector2( 0, 152 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Eyes"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Eyes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 42.0
+text = "above hair"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer"]
+margin_top = 46.0
+margin_right = 314.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="LightEye" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer"]
+margin_top = 82.0
+margin_right = 314.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/LightEye"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Light color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/LightEye"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkEye" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer"]
+margin_top = 106.0
+margin_right = 314.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/DarkEye"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Dark color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/DarkEye"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="ShadowEye" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer"]
+margin_top = 130.0
+margin_right = 314.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/ShadowEye"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Shadow color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Eyes/VBoxContainer/ShadowEye"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="Brows" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 672.0
+margin_right = 314.0
+margin_bottom = 774.0
+rect_min_size = Vector2( 0, 102 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Brows"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Brows"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 42.0
+text = "above hair"
+
+[node name="Offset" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer"]
+margin_top = 46.0
+margin_right = 314.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer/Offset"]
+margin_top = 1.0
+margin_right = 160.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 160, 0 )
+text = "Offset"
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer/Offset"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -1.0
+max_value = 2.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer"]
+margin_top = 66.0
+margin_right = 314.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Brows/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Hair" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 779.0
+margin_right = 314.0
+margin_bottom = 905.0
+rect_min_size = Vector2( 0, 126 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Hair"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Hair"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="LightHair" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer"]
+margin_top = 54.0
+margin_right = 314.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/LightHair"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Light color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/LightHair"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkHair" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer"]
+margin_top = 78.0
+margin_right = 314.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/DarkHair"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Dark color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/DarkHair"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="OutlineHair" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer"]
+margin_top = 102.0
+margin_right = 314.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/OutlineHair"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Outline color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/OutlineHair"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="Front" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 910.0
+margin_right = 314.0
+margin_bottom = 964.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Front"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Front/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Front Hair"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Front/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Front/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Front/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Front/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="BackHair" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 969.0
+margin_right = 314.0
+margin_bottom = 1023.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/BackHair"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/BackHair/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Back Hair"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/BackHair/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/BackHair/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/BackHair/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/BackHair/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Details" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1028.0
+margin_right = 314.0
+margin_bottom = 1082.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Details"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Details/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Hair Details"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Details/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Details/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Details/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Details/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Colors" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1087.0
+margin_right = 314.0
+margin_bottom = 1159.0
+rect_min_size = Vector2( 0, 72 )
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Colors"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "Colors"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Colors"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Black" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer/Black"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "Black color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer/Black"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="White" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer"]
+margin_top = 24.0
+margin_right = 314.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer/White"]
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 160, 0 )
+text = "White color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer/White"]
+margin_left = 164.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="Bottom" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 0.667
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -60.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bottom"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+
+[node name="ButtonPrev" type="Button" parent="Bottom/HBoxContainer"]
+margin_right = 161.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "previous"
+
+[node name="ButtonRng" type="Button" parent="Bottom/HBoxContainer"]
+margin_left = 165.0
+margin_right = 327.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "randomize"
+
+[node name="ButtonSave" type="Button" parent="Bottom/HBoxContainer"]
+margin_left = 331.0
+margin_right = 493.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Save"
+
+[node name="ButtonNext" type="Button" parent="Bottom/HBoxContainer"]
+margin_left = 497.0
+margin_right = 659.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "next"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+window_title = "Save Portrait"
+access = 2
+filters = PoolStringArray( "*.png ; PNG Images" )
+current_dir = "/home"
+current_path = "/home/"
