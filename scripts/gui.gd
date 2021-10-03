@@ -4,7 +4,7 @@ const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Hair/Eyes","Hair/Br
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
 	["#cc8665","#4c335c","#0f0814"],
-	["#eecc8c","#8c2a2a","#590e0e"],
+	["#eecc8c","#8c2a2a","#2a1722"],
 	["#9682d9","#4c2f93","#381e78"],
 	["#bf5656","#590e0e","#3e111a"],
 	["#d099c8","#4c335c","#2a1722"],

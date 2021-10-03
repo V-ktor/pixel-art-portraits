@@ -1,10 +1,11 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,NECKLACE,COLLAR,TIE,SCARF}
+enum Sprites {NONE,NECKLACE,COLLAR,BOW,TIE,SCARF}
 const FILES = {
 	Sprites.NECKLACE:"res://images/neck/necklace.png",
 	Sprites.COLLAR:"res://images/neck/collar.png",
+	Sprites.BOW:"res://images/neck/bow.png",
 	Sprites.TIE:"res://images/neck/tie.png",
 	Sprites.SCARF:"res://images/neck/scarf.png",
 }
