@@ -3,6 +3,8 @@ extends Control
 const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Hair/Eyes","Hair/Brows","Hair","Hair/Front","BackHair","Hair/Details"]
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
+	["#cc8665","#4c335c","#0f0814"],
+	["#eecc8c","#8c2a2a","#590e0e"],
 	["#9682d9","#4c2f93","#381e78"],
 	["#bf5656","#590e0e","#3e111a"],
 	["#d099c8","#4c335c","#2a1722"],
@@ -34,7 +36,7 @@ onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
 
 
 func _randomize():
-	var skin_color = 0
+	var skin_color = max(randi()%3-1, 0)
 	var primary_color = randi()%COLORS.size()
 	var secondary_color = randi()%COLORS.size()
 	var eye_color = randi()%COLORS.size()
