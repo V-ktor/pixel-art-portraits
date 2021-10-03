@@ -2,7 +2,7 @@
 
 Pixel art slightly anime style portrait generator for Godot Engine. Compatible with Godot 3.3.x. It's meant to be opened or run using Godot's project manager. See https://godotengine.org/
 
-For HTML5 file export an plugin is used: https://github.com/Pukkah/HTML5-File-Exchange-for-Godot
+For HTML5 file export a plugin is used: https://github.com/Pukkah/HTML5-File-Exchange-for-Godot
 
 ## Main scenes
 ### /scenes/female.tscn:
