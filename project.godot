@@ -14,9 +14,17 @@ config/name="Pixel Art Portraits"
 run/main_scene="res://scenes/gui.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+HTML5File="*res://addons/HTML5FileExchange/HTML5FileExchange.gd"
+
 [debug]
 
 gdscript/warnings/return_value_discarded=false
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/HTML5FileExchange/plugin.cfg" )
 
 [importer_defaults]
 
@@ -51,4 +59,5 @@ quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
 batching/precision/uv_contract=true
+environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
 environment/default_environment="res://default_env.tres"

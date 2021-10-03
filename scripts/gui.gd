@@ -155,8 +155,14 @@ func _cycle_buffer(inc: int):
 		set_portrait(buffer[to])
 
 func _save():
-	$FileDialog.show()
-	$FileDialog.invalidate()
+	if OS.get_name()=="HTML5":
+		var texture: ViewportTexture = $Viewport.get_texture()
+		var image:= texture.get_data()
+# warning-ignore:integer_division
+		HTML5File.save_image(image, "portrait"+str(buffer_index).pad_zeros(3)+".png")
+	else:
+		$FileDialog.show()
+		$FileDialog.invalidate()
 
 func _save_file(file : String):
 	var texture: ViewportTexture = $Viewport.get_texture()
