@@ -1,9 +1,10 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,DECORATION01}
+enum Sprites {NONE,DECORATION01,EARRINGS}
 const FILES = {
-	Sprites.DECORATION01:"decoration01.png"
+	Sprites.DECORATION01:"decoration01.png",
+	Sprites.EARRINGS:"earrings.png",
 }
 
 export(Sprites) var sprite:= Sprites.NONE setget set_sprite
@@ -18,7 +19,9 @@ func set_sprite(value: int) -> bool:
 	var ending: String = FILES[value].split(".")[1]
 	var new_texture:= load(path+"_"+name+"."+ending)
 	if new_texture==null:
-		printt(path+"/"+name+"."+ending+" not found!")
+		new_texture = load(path.substr(0,path.rfind("/"))+"/"+name+"."+ending)
+	if new_texture==null:
+		printt(path+"_"+name+"."+ending+" not found!")
 		return false
 	sprite = value
 	texture = new_texture
