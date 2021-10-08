@@ -152,6 +152,38 @@ func set_portrait(data: Dictionary):
 	$Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightDetail/ColorPickerButton.color = data.detail_light_color
 	$Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkDetail/ColorPickerButton.color = data.detail_dark_color
 
+func store_data():
+	var data:= {
+		"white_color":Color(WHITE_COLOR),
+		"black_color":Color(BLACK_COLOR),
+		"skin_light_color":Color(skin_material.get_shader_param("light_color")),
+		"skin_dark_color":Color(skin_material.get_shader_param("dark_color")),
+		"skin_shadow_color":Color(skin_material.get_shader_param("shadow_color")),
+		"primary_light_color":Color(primary_material.get_shader_param("light_color")),
+		"primary_dark_color":Color(primary_material.get_shader_param("dark_color")),
+		"primary_shadow_color":Color(primary_material.get_shader_param("shadow_color")),
+		"secondary_light_color":Color(secondary_material.get_shader_param("light_color")),
+		"secondary_dark_color":Color(secondary_material.get_shader_param("dark_color")),
+		"secondary_shadow_color":Color(secondary_material.get_shader_param("shadow_color")),
+		"detail_light_color":Color(detail_material.get_shader_param("light_color")),
+		"detail_dark_color":Color(detail_material.get_shader_param("dark_color")),
+		"detail_shadow_color":Color(detail_material.get_shader_param("shadow_color")),
+		"eye_light_color":Color(eye_material.get_shader_param("light_color")),
+		"eye_dark_color":Color(eye_material.get_shader_param("dark_color")),
+		"eye_shadow_color":Color(eye_material.get_shader_param("shadow_color")),
+		"hair_light_color":Color(hair_material.get_shader_param("light_color")),
+		"hair_dark_color":Color(hair_material.get_shader_param("dark_color")),
+		"hair_shadow_color":Color(hair_material.get_shader_param("shadow_color")),
+		"brows_offset":portrait.get_node("Hair/Brows").position.y
+	}
+	for type in PARTS:
+		data[type] = portrait.get_node(type).sprite
+	
+	buffer_index += 1
+	buffer[buffer_index] = data
+	if buffer_index>BUFFER_SIZE:
+		buffer_index = 0
+
 func _cycle_buffer(inc: int):
 	var to:= int(fposmod(buffer_index+inc, BUFFER_SIZE))
 	if buffer[to]==null:
@@ -169,6 +201,7 @@ func _save():
 	else:
 		$FileDialog.show()
 		$FileDialog.invalidate()
+	store_data()
 
 func _save_file(file : String):
 	var texture: ViewportTexture = $Viewport.get_texture()
