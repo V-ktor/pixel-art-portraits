@@ -1,11 +1,12 @@
 tool
 extends Sprite
 
-enum Sprites {FEMALE01,FEMALE02,FEMALE03}
+enum Sprites {FEMALE01,FEMALE02,FEMALE03,FEMALE_ANDROID}
 const FILES = {
 	Sprites.FEMALE01:"res://images/body/female01.png",
 	Sprites.FEMALE02:"res://images/body/female02.png",
 	Sprites.FEMALE03:"res://images/body/female03.png",
+	Sprites.FEMALE_ANDROID:"res://images/body/female_android.png",
 }
 
 export(Sprites) var sprite:= Sprites.FEMALE01 setget set_sprite

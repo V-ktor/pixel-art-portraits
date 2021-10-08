@@ -4,11 +4,11 @@ const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Hair/Eyes","Hair/Br
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
 	["#cc8665","#4c335c","#0f0814"],
+	["#e0f2f3","#6a7587","#181420"],
 	["#eecc8c","#8c2a2a","#2a1722"],
 	["#9682d9","#4c2f93","#381e78"],
 	["#bf5656","#590e0e","#3e111a"],
 	["#d099c8","#4c335c","#2a1722"],
-	["#e0f2f3","#6a7587","#181420"],
 	["#4b4b60","#181420","#181420"],
 	["#a4dddb","#253a5e","#22264f"],
 	["#788bbd","#253579","#22264f"],
@@ -78,6 +78,12 @@ func _randomize():
 		data["eye_dark_color"] = data["skin_dark_color"]
 		data["eye_shadow_color"] = data["skin_shadow_color"]
 	data["brows_offset"] = randi()%3-1
+	
+	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
+		skin_color = 2
+		data.skin_light_color = Color(COLORS[skin_color][0])
+		data.skin_dark_color = Color(COLORS[skin_color][1])
+		data.skin_shadow_color = Color(COLORS[skin_color][2])
 	
 	buffer_index += 1
 	buffer[buffer_index] = data
