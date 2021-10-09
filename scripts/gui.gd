@@ -73,10 +73,6 @@ func _randomize():
 		data["Hair"] = 1+randi()%(portrait.get_node("Hair").Sprites.size()-1)
 	if data["Cloths"]==0:
 		data["Cloths"] = 1+randi()%(portrait.get_node("Cloths").Sprites.size()-1)
-	if "closed" in portrait.get_node("Hair/Eyes").Sprites.keys()[data["Hair/Eyes"]].to_lower():
-		data["eye_light_color"] = data["skin_light_color"]
-		data["eye_dark_color"] = data["skin_dark_color"]
-		data["eye_shadow_color"] = data["skin_shadow_color"]
 	data["brows_offset"] = randi()%3-1
 	
 	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:

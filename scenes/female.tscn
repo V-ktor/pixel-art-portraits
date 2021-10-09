@@ -157,6 +157,10 @@ show_behind_parent = true
 material = SubResource( 3 )
 texture = ExtResource( 24 )
 
+[node name="EyeShadow" type="Sprite" parent="Hair"]
+show_behind_parent = true
+material = SubResource( 3 )
+
 [node name="Eyes" type="Sprite" parent="Hair"]
 show_behind_parent = true
 material = SubResource( 7 )
