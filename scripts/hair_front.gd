@@ -19,7 +19,8 @@ func set_sprite(value: int) -> bool:
 	if value==Sprites.NONE:
 		sprite = value
 		texture = null
-		$"../FrontShadow".texture = null
+		if is_inside_tree():
+			$"../FrontShadow".texture = null
 		return true
 	var path: String = FILES[value].split(".")[0]
 	var ending: String = FILES[value].split(".")[1]

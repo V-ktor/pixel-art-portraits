@@ -1,9 +1,10 @@
 tool
 extends Sprite
 
-enum Sprites {NEUTRAL,SMALL,SMILE01,SMILE02,GRIN01,GRIN02,SAD01,SAD02,O}
+enum Sprites {NEUTRAL01,NEUTRAL02,SMALL,SMILE01,SMILE02,GRIN01,GRIN02,SAD01,SAD02,O}
 const FILES = {
-	Sprites.NEUTRAL:"res://images/mouth/neutral.png",
+	Sprites.NEUTRAL01:"res://images/mouth/neutral01.png",
+	Sprites.NEUTRAL02:"res://images/mouth/neutral02.png",
 	Sprites.SMALL:"res://images/mouth/small.png",
 	Sprites.SMILE01:"res://images/mouth/smile01.png",
 	Sprites.SMILE02:"res://images/mouth/smile02.png",
@@ -14,7 +15,7 @@ const FILES = {
 	Sprites.O:"res://images/mouth/O.png",
 }
 
-export(Sprites) var sprite:= Sprites.NEUTRAL setget set_sprite
+export(Sprites) var sprite:= Sprites.NEUTRAL01 setget set_sprite
 
 func set_sprite(value: int) -> bool:
 	var new_texture:= load(FILES[value])

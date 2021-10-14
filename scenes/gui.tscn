@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/female.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/portrait.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/gui.gd" type="Script" id=2]
 
 [sub_resource type="ViewportTexture" id=1]
@@ -83,14 +83,66 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 margin_right = 314.0
-margin_bottom = 1159.0
+margin_bottom = 1218.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
 
-[node name="Body" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Type" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_right = 314.0
-margin_bottom = 102.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Type"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Gender"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Body" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 59.0
+margin_right = 314.0
+margin_bottom = 161.0
 rect_min_size = Vector2( 0, 102 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Body"]
@@ -184,9 +236,9 @@ size_flags_vertical = 3
 edit_alpha = false
 
 [node name="Mouth" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 107.0
+margin_top = 166.0
 margin_right = 314.0
-margin_bottom = 161.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 0, 54 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Mouth"]
@@ -236,9 +288,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="Nose" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 166.0
+margin_top = 225.0
 margin_right = 314.0
-margin_bottom = 220.0
+margin_bottom = 279.0
 rect_min_size = Vector2( 0, 54 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Nose"]
@@ -288,9 +340,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="Cloths" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 225.0
+margin_top = 284.0
 margin_right = 314.0
-margin_bottom = 423.0
+margin_bottom = 482.0
 rect_min_size = Vector2( 0, 198 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Cloths"]
@@ -472,9 +524,9 @@ size_flags_vertical = 3
 edit_alpha = false
 
 [node name="Neck" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 428.0
+margin_top = 487.0
 margin_right = 314.0
-margin_bottom = 510.0
+margin_bottom = 569.0
 rect_min_size = Vector2( 0, 82 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Neck"]
@@ -531,9 +583,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="Eyes" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 515.0
+margin_top = 574.0
 margin_right = 314.0
-margin_bottom = 667.0
+margin_bottom = 726.0
 rect_min_size = Vector2( 0, 152 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Eyes"]
@@ -655,9 +707,9 @@ size_flags_vertical = 3
 edit_alpha = false
 
 [node name="Brows" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 672.0
+margin_top = 731.0
 margin_right = 314.0
-margin_bottom = 774.0
+margin_bottom = 833.0
 rect_min_size = Vector2( 0, 102 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Brows"]
@@ -736,9 +788,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="Hair" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 779.0
+margin_top = 838.0
 margin_right = 314.0
-margin_bottom = 905.0
+margin_bottom = 964.0
 rect_min_size = Vector2( 0, 126 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Hair"]
@@ -854,9 +906,9 @@ size_flags_vertical = 3
 edit_alpha = false
 
 [node name="Front" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 910.0
+margin_top = 969.0
 margin_right = 314.0
-margin_bottom = 964.0
+margin_bottom = 1023.0
 rect_min_size = Vector2( 0, 54 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Front"]
@@ -906,9 +958,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="BackHair" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 969.0
+margin_top = 1028.0
 margin_right = 314.0
-margin_bottom = 1023.0
+margin_bottom = 1082.0
 rect_min_size = Vector2( 0, 54 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/BackHair"]
@@ -958,9 +1010,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="Details" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 1028.0
+margin_top = 1087.0
 margin_right = 314.0
-margin_bottom = 1082.0
+margin_bottom = 1141.0
 rect_min_size = Vector2( 0, 54 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Details"]
@@ -1010,9 +1062,9 @@ rect_min_size = Vector2( 32, 0 )
 text = ">"
 
 [node name="Colors" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 1087.0
+margin_top = 1146.0
 margin_right = 314.0
-margin_bottom = 1159.0
+margin_bottom = 1218.0
 rect_min_size = Vector2( 0, 72 )
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Colors"]

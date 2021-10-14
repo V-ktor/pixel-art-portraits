@@ -3,7 +3,7 @@
 [ext_resource path="res://images/body/female01.png" type="Texture" id=1]
 [ext_resource path="res://scripts/body.gd" type="Script" id=2]
 [ext_resource path="res://scripts/mouth.gd" type="Script" id=3]
-[ext_resource path="res://images/mouth/small.png" type="Texture" id=4]
+[ext_resource path="res://images/cloths/female01_primary.png" type="Texture" id=4]
 [ext_resource path="res://scripts/nose.gd" type="Script" id=5]
 [ext_resource path="res://images/nose/small02.png" type="Texture" id=6]
 [ext_resource path="res://scripts/eyes.gd" type="Script" id=7]
@@ -19,7 +19,7 @@
 [ext_resource path="res://images/hair/base/female01_shadow.png" type="Texture" id=17]
 [ext_resource path="res://scripts/hair_front.gd" type="Script" id=18]
 [ext_resource path="res://scripts/necklace.gd" type="Script" id=19]
-[ext_resource path="res://images/cloths/female01_primary.png" type="Texture" id=20]
+[ext_resource path="res://images/mouth/neutral02.png" type="Texture" id=20]
 [ext_resource path="res://images/hair/front/female06.png" type="Texture" id=21]
 [ext_resource path="res://scripts/back_hair.gd" type="Script" id=22]
 [ext_resource path="res://images/hair/back/medium02.png" type="Texture" id=23]
@@ -110,7 +110,7 @@ script = ExtResource( 2 )
 
 [node name="Cloths" type="Sprite" parent="."]
 material = SubResource( 4 )
-texture = ExtResource( 20 )
+texture = ExtResource( 4 )
 script = ExtResource( 13 )
 
 [node name="Shadow" type="Sprite" parent="Cloths"]
@@ -132,7 +132,7 @@ script = ExtResource( 19 )
 
 [node name="Mouth" type="Sprite" parent="."]
 material = SubResource( 3 )
-texture = ExtResource( 4 )
+texture = ExtResource( 20 )
 script = ExtResource( 3 )
 sprite = 1
 

@@ -1,5 +1,6 @@
 extends Control
 
+const TYPES = ["Female","Male"]
 const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Hair/Eyes","Hair/Brows","Hair","Hair/Front","BackHair","Hair/Details"]
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
@@ -25,6 +26,7 @@ const BUFFER_SIZE = 128
 
 var buffer:= []
 var buffer_index:= 0
+var type: String = TYPES[0]
 
 onready var portrait:= $Viewport/Portrait
 onready var skin_material: ShaderMaterial = $Viewport/Portrait/Body.material
@@ -65,10 +67,14 @@ func _randomize():
 		"hair_shadow_color":Color(COLORS[hair_color][2])
 	}
 	
-	for type in PARTS:
-		data[type] = randi()%portrait.get_node(type).Sprites.size()
-	if randf()<0.5:
-		data["Body"] = 0
+	for part in PARTS:
+		if portrait.get_node(part).get(type)!=null:
+			var num: int = portrait.get_node(part).Sprites.size()-portrait.get_node(part).get(type)
+			if TYPES.find(type)!=TYPES.size()-1:
+				num = portrait.get_node(part).get(TYPES[TYPES.find(type)+1])
+			data[part] = randi()%num+portrait.get_node(part).get(type)
+		else:
+			data[part] = randi()%portrait.get_node(part).Sprites.size()
 	if data["Hair"]==0:
 		data["Hair"] = 1+randi()%(portrait.get_node("Hair").Sprites.size()-1)
 	if data["Cloths"]==0:
@@ -214,6 +220,18 @@ func _cycle(node: Node2D, inc: int, button: OptionButton):
 	node.set_sprite(ID)
 	button.selected = ID
 
+func _set_type(ID: int):
+	type = TYPES[ID]
+	set_portrait(buffer[buffer_index])
+	store_data()
+
+func _cycle_type(inc: int, button: OptionButton):
+	var ID: int = int(abs(TYPES.find(type)+inc))%TYPES.size()
+	type = TYPES[ID]
+	button.selected = ID
+	set_portrait(buffer[buffer_index])
+	store_data()
+
 func _set_color(color: Color, material: String, type: String):
 	get(material).set_shader_param(type, color)
 
@@ -251,8 +269,26 @@ func add_presets(node):
 			for array in COLORS:
 				for col in array:
 					picker.add_preset(Color(col))
+			picker.connect("preset_added", self, "_add_preset", [self])
+			picker.connect("preset_removed", self, "_remove_preset", [self])
 		else:
 			add_presets(c)
+
+func _add_preset(color, node):
+	for c in node.get_children():
+		if c is ColorPickerButton:
+			var picker: ColorPicker = c.get_picker()
+			picker.add_preset(color)
+		else:
+			_add_preset(color, c)
+
+func _remove_preset(color, node):
+	for c in node.get_children():
+		if c is ColorPickerButton:
+			var picker: ColorPicker = c.get_picker()
+			picker.erase_preset(color)
+		else:
+			_remove_preset(color, c)
 
 func _resized():
 	var scale:= int(max(5.0*min((OS.window_size.x-60)/1024.0, 1.5*(OS.window_size.y-130)/600.0), 1))
@@ -279,6 +315,11 @@ func _ready():
 		get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "_set_sprite", [portrait.get_node(type)])
 		get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/ButtonLeft").connect("pressed", self, "_cycle", [portrait.get_node(type),-1,get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/OptionButton")])
 		get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/ButtonRight").connect("pressed", self, "_cycle", [portrait.get_node(type),1,get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/OptionButton")])
+	for i in range(TYPES.size()):
+		get_node("Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer/OptionButton").add_item(TYPES[i].capitalize(),i)
+		get_node("Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "_set_type")
+		get_node("Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer/ButtonLeft").connect("pressed", self, "_cycle_type", [-1,get_node("Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer/OptionButton")])
+		get_node("Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer/ButtonRight").connect("pressed", self, "_cycle_type", [1,get_node("Panel/ScrollContainer/VBoxContainer/Type/VBoxContainer/HBoxContainer/OptionButton")])
 	
 	$Bottom/HBoxContainer/ButtonRng.connect("pressed", self, "_randomize")
 	$Bottom/HBoxContainer/ButtonPrev.connect("pressed", self, "_cycle_buffer", [-1])
