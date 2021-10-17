@@ -1,7 +1,7 @@
 extends Control
 
 const TYPES = ["Female","Male"]
-const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Hair/Eyes","Hair/Brows","Hair","Hair/Front","BackHair","Hair/Details"]
+const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Beard","Hair/Eyes","Hair/Brows","Hair","Hair/Front","BackHair","Hair/Details"]
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
 	["#cc8665","#4c335c","#0f0814"],
@@ -75,11 +75,21 @@ func _randomize():
 			data[part] = randi()%num+portrait.get_node(part).get(type)
 		else:
 			data[part] = randi()%portrait.get_node(part).Sprites.size()
-	if data["Hair"]==0:
-		data["Hair"] = 1+randi()%(portrait.get_node("Hair").Sprites.size()-1)
-	if data["Cloths"]==0:
-		data["Cloths"] = 1+randi()%(portrait.get_node("Cloths").Sprites.size()-1)
-	data["brows_offset"] = randi()%3-1
+	if data.Hair==0:
+		data.Hair = 1+randi()%(portrait.get_node("Hair").Sprites.size()-1)
+	if type=="Male":
+		data["Hair/Details"] = 0
+		if randf()<0.1:
+			data.Hair = 0
+			if randf()<0.75:
+				data["Hair/Front"] = 0
+		if randf()<0.5:
+			data.Beard = 0
+	elif type=="Female":
+		data.Beard = 0
+	if data.Cloths==0:
+		data.Cloths = 1+randi()%(portrait.get_node("Cloths").Sprites.size()-1)
+	data.brows_offset = randi()%3-1
 	
 	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 		skin_color = 2
@@ -95,6 +105,7 @@ func _randomize():
 	set_portrait(data)
 
 func set_portrait(data: Dictionary):
+	# warning-ignore:shadowed_variable
 	for type in PARTS:
 		portrait.get_node(type).set_sprite(data[type])
 		if !has_node("Panel/ScrollContainer/VBoxContainer/"+type):
@@ -178,6 +189,7 @@ func store_data():
 		"hair_shadow_color":Color(hair_material.get_shader_param("shadow_color")),
 		"brows_offset":portrait.get_node("Hair/Brows").position.y
 	}
+	# warning-ignore:shadowed_variable
 	for type in PARTS:
 		data[type] = portrait.get_node(type).sprite
 	
@@ -232,9 +244,11 @@ func _cycle_type(inc: int, button: OptionButton):
 	set_portrait(buffer[buffer_index])
 	store_data()
 
+# warning-ignore:shadowed_variable
 func _set_color(color: Color, material: String, type: String):
 	get(material).set_shader_param(type, color)
 
+# warning-ignore:shadowed_variable
 func _set_bw_color(color: Color, type: String):
 	skin_material.set_shader_param(type, color)
 	eye_material.set_shader_param(type, color)
@@ -300,6 +314,7 @@ func _ready():
 	_resized()
 	get_tree().connect("screen_resized", self, "_resized")
 	
+	# warning-ignore:shadowed_variable
 	for type in PARTS:
 		if !has_node("Panel/ScrollContainer/VBoxContainer/"+type):
 			var t = type.split("/")
