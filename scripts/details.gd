@@ -11,7 +11,7 @@ const FILES = {
 export(Sprites) var sprite:= Sprites.NONE setget set_sprite
 
 func set_sprite(value: int) -> bool:
-	if value==Sprites.NONE:
+	if value==Sprites.NONE || get_parent().sprite==get_parent().Sprites.NONE:
 		sprite = value
 		texture = null
 		return true

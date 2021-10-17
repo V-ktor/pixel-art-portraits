@@ -1,7 +1,7 @@
 tool
 extends Sprite
 
-enum Sprites {FEMALE01,FEMALE02,FEMALE03,FEMALE_ANDROID,MALE01,MALE02}
+enum Sprites {FEMALE01,FEMALE02,FEMALE03,FEMALE_ANDROID,MALE01,MALE02,MALE03,MALE_ANDROID}
 const Male = Sprites.MALE01
 const Female = Sprites.FEMALE01
 const FILES = {
@@ -11,6 +11,8 @@ const FILES = {
 	Sprites.FEMALE_ANDROID:"res://images/body/female_android.png",
 	Sprites.MALE01:"res://images/body/male01.png",
 	Sprites.MALE02:"res://images/body/male02.png",
+	Sprites.MALE03:"res://images/body/male03.png",
+	Sprites.MALE_ANDROID:"res://images/body/male_android.png",
 }
 
 export(Sprites) var sprite:= Sprites.FEMALE01 setget set_sprite
