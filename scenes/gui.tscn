@@ -83,7 +83,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 margin_right = 314.0
-margin_bottom = 1277.0
+margin_bottom = 1336.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
@@ -1113,10 +1113,62 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 32, 0 )
 text = ">"
 
-[node name="Colors" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Glasses" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 1205.0
 margin_right = 314.0
-margin_bottom = 1277.0
+margin_bottom = 1259.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Glasses"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Glasses/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Glasses"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Glasses/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Glasses/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Glasses/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Glasses/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Colors" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1264.0
+margin_right = 314.0
+margin_bottom = 1336.0
 rect_min_size = Vector2( 0, 72 )
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Colors"]

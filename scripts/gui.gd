@@ -1,7 +1,7 @@
 extends Control
 
 const TYPES = ["Female","Male"]
-const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Beard","Hair/Eyes","Hair/Brows","Hair","Hair/Front","BackHair","Hair/Details"]
+const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Beard","Hair/Eyes","Hair/Brows","Hair/Eyes/Glasses","Hair","Hair/Front","BackHair","Hair/Details"]
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
 	["#cc8665","#4c335c","#0f0814"],
@@ -110,8 +110,8 @@ func set_portrait(data: Dictionary):
 		portrait.get_node(type).set_sprite(data[type])
 		if !has_node("Panel/ScrollContainer/VBoxContainer/"+type):
 			var t = type.split("/")
-			if t.size()>1 && has_node("Panel/ScrollContainer/VBoxContainer/"+t[1]):
-				get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/OptionButton").selected = portrait.get_node(type).sprite
+			if t.size()>1 && has_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]):
+				get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/OptionButton").selected = portrait.get_node(type).sprite
 			continue
 		get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/OptionButton").selected = portrait.get_node(type).sprite
 	portrait.get_node("Hair/Brows").position.y = -data.brows_offset
@@ -318,12 +318,12 @@ func _ready():
 	for type in PARTS:
 		if !has_node("Panel/ScrollContainer/VBoxContainer/"+type):
 			var t = type.split("/")
-			if t.size()>1 && has_node("Panel/ScrollContainer/VBoxContainer/"+t[1]):
+			if t.size()>1 && has_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]):
 				for i in range(portrait.get_node(type).Sprites.size()):
-					get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/OptionButton").add_item(portrait.get_node(type).Sprites.keys()[i].capitalize(),i)
-				get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "_set_sprite", [portrait.get_node(type)])
-				get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/ButtonLeft").connect("pressed", self, "_cycle", [portrait.get_node(type),-1,get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/OptionButton")])
-				get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/ButtonRight").connect("pressed", self, "_cycle", [portrait.get_node(type),1,get_node("Panel/ScrollContainer/VBoxContainer/"+t[1]+"/VBoxContainer/HBoxContainer/OptionButton")])
+					get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/OptionButton").add_item(portrait.get_node(type).Sprites.keys()[i].capitalize(),i)
+				get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "_set_sprite", [portrait.get_node(type)])
+				get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/ButtonLeft").connect("pressed", self, "_cycle", [portrait.get_node(type),-1,get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/OptionButton")])
+				get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/ButtonRight").connect("pressed", self, "_cycle", [portrait.get_node(type),1,get_node("Panel/ScrollContainer/VBoxContainer/"+t[t.size()-1]+"/VBoxContainer/HBoxContainer/OptionButton")])
 			continue
 		for i in range(portrait.get_node(type).Sprites.size()):
 			get_node("Panel/ScrollContainer/VBoxContainer/"+type+"/VBoxContainer/HBoxContainer/OptionButton").add_item(portrait.get_node(type).Sprites.keys()[i].capitalize(),i)

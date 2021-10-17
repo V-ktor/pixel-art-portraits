@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://images/body/female01.png" type="Texture" id=1]
 [ext_resource path="res://scripts/body.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://images/hair/front/female06_shadow.png" type="Texture" id=24]
 [ext_resource path="res://scripts/beard.gd" type="Script" id=25]
 [ext_resource path="res://scripts/details.gd" type="Script" id=26]
+[ext_resource path="res://scripts/glasses.gd" type="Script" id=27]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -175,6 +176,14 @@ show_behind_parent = true
 material = SubResource( 7 )
 texture = ExtResource( 8 )
 script = ExtResource( 7 )
+
+[node name="Glasses" type="Sprite" parent="Hair/Eyes"]
+material = SubResource( 6 )
+script = ExtResource( 27 )
+
+[node name="Shadow" type="Sprite" parent="Hair/Eyes/Glasses"]
+show_behind_parent = true
+material = SubResource( 3 )
 
 [node name="Brows" type="Sprite" parent="Hair"]
 show_behind_parent = true
