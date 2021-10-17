@@ -20,10 +20,10 @@
 [ext_resource path="res://scripts/hair_front.gd" type="Script" id=18]
 [ext_resource path="res://scripts/necklace.gd" type="Script" id=19]
 [ext_resource path="res://images/mouth/neutral02.png" type="Texture" id=20]
-[ext_resource path="res://images/hair/front/female06.png" type="Texture" id=21]
+[ext_resource path="res://images/hair/front/female02_shadow.png" type="Texture" id=21]
 [ext_resource path="res://scripts/back_hair.gd" type="Script" id=22]
 [ext_resource path="res://images/hair/back/medium02.png" type="Texture" id=23]
-[ext_resource path="res://images/hair/front/female06_shadow.png" type="Texture" id=24]
+[ext_resource path="res://images/hair/front/female02.png" type="Texture" id=24]
 [ext_resource path="res://scripts/beard.gd" type="Script" id=25]
 [ext_resource path="res://scripts/details.gd" type="Script" id=26]
 [ext_resource path="res://scripts/glasses.gd" type="Script" id=27]
@@ -165,7 +165,7 @@ texture = ExtResource( 17 )
 [node name="FrontShadow" type="Sprite" parent="Hair"]
 show_behind_parent = true
 material = SubResource( 3 )
-texture = ExtResource( 24 )
+texture = ExtResource( 21 )
 
 [node name="EyeShadow" type="Sprite" parent="Hair"]
 show_behind_parent = true
@@ -197,9 +197,9 @@ script = ExtResource( 26 )
 
 [node name="Front" type="Sprite" parent="Hair"]
 material = SubResource( 2 )
-texture = ExtResource( 21 )
+texture = ExtResource( 24 )
 script = ExtResource( 18 )
 __meta__ = {
 "_editor_description_": ""
 }
-sprite = 6
+sprite = 2
