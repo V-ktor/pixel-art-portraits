@@ -1,7 +1,7 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,FEMALE01,FEMALE02,FEMALE03,FEMALE04,FEMALE05,FEMALE06,FEMALE07,FEMALE09,\
+enum Sprites {NONE,FEMALE01,FEMALE02,FEMALE03,FEMALE04,FEMALE05,FEMALE06,FEMALE07,FEMALE08,FEMALE09,FEMALE10,\
 CAT_EARS}
 const FILES = {
 	Sprites.FEMALE01:"res://images/hair/front/female01.png",
@@ -11,7 +11,9 @@ const FILES = {
 	Sprites.FEMALE05:"res://images/hair/front/female05.png",
 	Sprites.FEMALE06:"res://images/hair/front/female06.png",
 	Sprites.FEMALE07:"res://images/hair/front/female07.png",
+	Sprites.FEMALE08:"res://images/hair/front/female08.png",
 	Sprites.FEMALE09:"res://images/hair/front/female09.png",
+	Sprites.FEMALE10:"res://images/hair/front/female10.png",
 	Sprites.CAT_EARS:"res://images/hair/front/cat_ears.png",
 }
 
