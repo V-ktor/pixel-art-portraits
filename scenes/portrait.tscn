@@ -20,10 +20,10 @@
 [ext_resource path="res://scripts/hair_front.gd" type="Script" id=18]
 [ext_resource path="res://scripts/necklace.gd" type="Script" id=19]
 [ext_resource path="res://images/mouth/neutral02.png" type="Texture" id=20]
-[ext_resource path="res://images/hair/front/female01_shadow.png" type="Texture" id=21]
+[ext_resource path="res://images/hair/front/female02_shadow.png" type="Texture" id=21]
 [ext_resource path="res://scripts/back_hair.gd" type="Script" id=22]
 [ext_resource path="res://images/hair/back/medium02.png" type="Texture" id=23]
-[ext_resource path="res://images/hair/front/female01.png" type="Texture" id=24]
+[ext_resource path="res://images/hair/front/female02.png" type="Texture" id=24]
 [ext_resource path="res://scripts/beard.gd" type="Script" id=25]
 [ext_resource path="res://scripts/details.gd" type="Script" id=26]
 [ext_resource path="res://scripts/glasses.gd" type="Script" id=27]
@@ -202,3 +202,4 @@ script = ExtResource( 18 )
 __meta__ = {
 "_editor_description_": ""
 }
+sprite = 2
