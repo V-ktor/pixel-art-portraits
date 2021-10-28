@@ -81,6 +81,7 @@ func _randomize():
 		data["Hair/Details"] = 0
 		if randf()<0.1:
 			data.Hair = 0
+			data.BackHair = 0
 			if randf()<0.75:
 				data["Hair/Front"] = 0
 		if randf()<0.5:
