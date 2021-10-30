@@ -91,6 +91,8 @@ func _randomize():
 	if data.Cloths==0:
 		data.Cloths = 1+randi()%(portrait.get_node("Cloths").Sprites.size()-1)
 	data.brows_offset = randi()%3-1
+	if randf()<0.75:
+		data["Hair/Eyes/Glasses"] = 0
 	
 	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 		skin_color = 2
