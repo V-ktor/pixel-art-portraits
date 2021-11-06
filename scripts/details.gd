@@ -1,11 +1,12 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,DECORATION01,EARRINGS,RIBBON}
+enum Sprites {NONE,DECORATION01,EARRINGS,RIBBON,HEADSET}
 const FILES = {
 	Sprites.DECORATION01:"decoration01.png",
 	Sprites.EARRINGS:"earrings.png",
 	Sprites.RIBBON:"ribbon.png",
+	Sprites.HEADSET:"headset.png",
 }
 
 export(Sprites) var sprite:= Sprites.NONE setget set_sprite
