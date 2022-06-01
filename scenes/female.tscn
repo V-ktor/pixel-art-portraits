@@ -1,0 +1,167 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://images/body/female01.png" type="Texture" id=1]
+[ext_resource path="res://scripts/body.gd" type="Script" id=2]
+[ext_resource path="res://scripts/mouth.gd" type="Script" id=3]
+[ext_resource path="res://images/mouth/small.png" type="Texture" id=4]
+[ext_resource path="res://scripts/nose.gd" type="Script" id=5]
+[ext_resource path="res://images/nose/small02.png" type="Texture" id=6]
+[ext_resource path="res://scripts/eyes.gd" type="Script" id=7]
+[ext_resource path="res://images/eyes/female01.png" type="Texture" id=8]
+[ext_resource path="res://scripts/brows.gd" type="Script" id=9]
+[ext_resource path="res://images/brows/neutral01.png" type="Texture" id=10]
+[ext_resource path="res://scripts/hair.gd" type="Script" id=11]
+[ext_resource path="res://images/cloths/female05_secondary.png" type="Texture" id=12]
+[ext_resource path="res://scripts/cloths.gd" type="Script" id=13]
+[ext_resource path="res://images/cloths/female05_primary.png" type="Texture" id=14]
+[ext_resource path="res://images/cloths/female05_shadow.png" type="Texture" id=15]
+[ext_resource path="res://images/hair/base/female01_shadow.png" type="Texture" id=16]
+[ext_resource path="res://images/hair/base/female01.png" type="Texture" id=17]
+[ext_resource path="res://scripts/hair_front.gd" type="Script" id=18]
+[ext_resource path="res://scripts/necklace.gd" type="Script" id=19]
+[ext_resource path="res://images/hair/front/female01.png" type="Texture" id=21]
+[ext_resource path="res://scripts/back_hair.gd" type="Script" id=22]
+[ext_resource path="res://images/hair/back/medium02.png" type="Texture" id=23]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 light_color : hint_color = vec4(1.0,0.9,0.88,1.0);
+uniform vec4 dark_color : hint_color = vec4(0.6,0.42,0.53,1.0);
+uniform vec4 shadow_color : hint_color = vec4(0.13,0.15,0.31,1.0);
+uniform vec4 white_color : hint_color = vec4(1.0,1.0,1.0,1.0);
+uniform vec4 black_color : hint_color = vec4(0.06,0.03,0.08,1.0);
+
+void fragment()
+{
+	vec4 mask = texture(TEXTURE,UV);
+	float weight = min(10.0*max(abs(mask.r-mask.g),abs(mask.b-mask.g)),1.0);
+	float value = (mask.r+mask.g+mask.b)/3.0;
+	COLOR = (dark_color*mask.r+light_color*mask.g+shadow_color*mask.b)*weight+(black_color*(1.0-value)+white_color*value)*(1.0-weight);
+	COLOR.a = mask.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 0.815686, 0.6, 0.784314, 1 )
+shader_param/dark_color = Color( 0.298039, 0.2, 0.360784, 1 )
+shader_param/shadow_color = Color( 0.133333, 0.14902, 0.309804, 1 )
+shader_param/white_color = Color( 1, 1, 1, 1 )
+shader_param/black_color = Color( 0.0588235, 0.0313726, 0.0784314, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 1, 0.901961, 0.878431, 1 )
+shader_param/dark_color = Color( 0.6, 0.419608, 0.529412, 1 )
+shader_param/shadow_color = Color( 0.13, 0.15, 0.31, 1 )
+shader_param/white_color = Color( 1, 1, 1, 1 )
+shader_param/black_color = Color( 0.06, 0.03, 0.08, 1 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+shader_param/dark_color = Color( 0.0588235, 0.0313726, 0.0784314, 1 )
+shader_param/shadow_color = Color( 0.13, 0.15, 0.31, 1 )
+shader_param/white_color = Color( 1, 1, 1, 1 )
+shader_param/black_color = Color( 0.06, 0.03, 0.08, 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 0.415686, 0.458824, 0.529412, 1 )
+shader_param/dark_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+shader_param/shadow_color = Color( 0.13, 0.15, 0.31, 1 )
+shader_param/white_color = Color( 1, 1, 1, 1 )
+shader_param/black_color = Color( 0.06, 0.03, 0.08, 1 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 0.815686, 0.6, 0.784314, 1 )
+shader_param/dark_color = Color( 0.298039, 0.2, 0.360784, 1 )
+shader_param/shadow_color = Color( 0.133333, 0.14902, 0.309804, 1 )
+shader_param/white_color = Color( 1, 1, 1, 1 )
+shader_param/black_color = Color( 0.0588235, 0.0313726, 0.0784314, 1 )
+
+[node name="Portrait" type="Node2D"]
+
+[node name="BackHair" type="Sprite" parent="."]
+material = SubResource( 2 )
+texture = ExtResource( 23 )
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+sprite = 3
+
+[node name="Body" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Cloths" type="Sprite" parent="."]
+material = SubResource( 4 )
+texture = ExtResource( 14 )
+script = ExtResource( 13 )
+sprite = 5
+
+[node name="Shadow" type="Sprite" parent="Cloths"]
+show_behind_parent = true
+material = SubResource( 3 )
+texture = ExtResource( 15 )
+
+[node name="Neck" type="Sprite" parent="Cloths"]
+show_behind_parent = true
+material = SubResource( 6 )
+script = ExtResource( 19 )
+
+[node name="Secondary" type="Sprite" parent="Cloths"]
+material = SubResource( 6 )
+texture = ExtResource( 12 )
+
+[node name="Details" type="Sprite" parent="Cloths"]
+material = SubResource( 2 )
+
+[node name="Mouth" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+sprite = 1
+
+[node name="Nose" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 6 )
+script = ExtResource( 5 )
+sprite = 1
+
+[node name="Hair" type="Sprite" parent="."]
+material = SubResource( 2 )
+texture = ExtResource( 17 )
+script = ExtResource( 11 )
+
+[node name="Shadow" type="Sprite" parent="Hair"]
+show_behind_parent = true
+material = SubResource( 3 )
+texture = ExtResource( 16 )
+
+[node name="FrontShadow" type="Sprite" parent="Hair"]
+show_behind_parent = true
+material = SubResource( 3 )
+
+[node name="Eyes" type="Sprite" parent="Hair"]
+show_behind_parent = true
+material = SubResource( 7 )
+texture = ExtResource( 8 )
+script = ExtResource( 7 )
+
+[node name="Brows" type="Sprite" parent="Hair"]
+show_behind_parent = true
+material = SubResource( 3 )
+texture = ExtResource( 10 )
+script = ExtResource( 9 )
+
+[node name="Front" type="Sprite" parent="Hair"]
+material = SubResource( 2 )
+texture = ExtResource( 21 )
+script = ExtResource( 18 )
+__meta__ = {
+"_editor_description_": ""
+}
