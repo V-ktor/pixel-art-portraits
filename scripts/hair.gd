@@ -1,9 +1,9 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,FEMALE01,FEMALE02,FEMALE03,FEMALE04,FEMALE06,FEMALE07,FEMALE08,FEMALE09,FEMALE10,\
-FEMALE11,FEMALE12,FEMALE13,PONYTAIL01,
-MALE01,MALE02,MALE03,MALE04,MALE05,MALE06,MALE07,MALE08,MALE09}
+enum Sprites {NONE,FEMALE01,FEMALE02,FEMALE03,FEMALE04,FEMALE06,FEMALE07,FEMALE08,FEMALE09,FEMALE10,
+FEMALE11,FEMALE12,FEMALE13,FEMALE14,PONYTAIL01,
+MALE01,MALE02,MALE03,MALE04,MALE05,MALE06,MALE07,MALE08,MALE09,MALE10}
 const Male = Sprites.MALE01
 const Female = Sprites.FEMALE01
 const FILES = {
@@ -19,6 +19,7 @@ const FILES = {
 	Sprites.FEMALE11:"res://images/hair/base/female11.png",
 	Sprites.FEMALE12:"res://images/hair/base/female12.png",
 	Sprites.FEMALE13:"res://images/hair/base/female13.png",
+	Sprites.FEMALE14:"res://images/hair/base/female14.png",
 	Sprites.PONYTAIL01:"res://images/hair/base/ponytail01.png",
 	Sprites.MALE01:"res://images/hair/base/male01.png",
 	Sprites.MALE02:"res://images/hair/base/male02.png",
@@ -29,6 +30,7 @@ const FILES = {
 	Sprites.MALE07:"res://images/hair/base/male07.png",
 	Sprites.MALE08:"res://images/hair/base/male08.png",
 	Sprites.MALE09:"res://images/hair/base/male09.png",
+	Sprites.MALE10:"res://images/hair/base/male10.png",
 }
 
 export(Sprites) var sprite:= Sprites.FEMALE01 setget set_sprite
@@ -49,6 +51,7 @@ func set_sprite(value: int) -> bool:
 	texture = new_texture
 	if !is_inside_tree():
 		return false
+	$Details.set_sprite($Details.sprite)
 	new_texture = load(path+"_shadow."+ending)
 	if new_texture==null:
 		printt(path+"_shadow."+ending+" not found!")
