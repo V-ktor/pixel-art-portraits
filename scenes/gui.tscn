@@ -80,7 +80,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 margin_right = 314.0
-margin_bottom = 1336.0
+margin_bottom = 1502.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
@@ -1162,10 +1162,152 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 32, 0 )
 text = ">"
 
-[node name="Colors" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Ears" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 1264.0
 margin_right = 314.0
-margin_bottom = 1336.0
+margin_bottom = 1318.0
+rect_min_size = Vector2( 0, 54 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Ears"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Ears/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Ears"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Ears/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Ears/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Ears/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Ears/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="Horns" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1323.0
+margin_right = 314.0
+margin_bottom = 1425.0
+rect_min_size = Vector2( 0, 102 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Horns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 14.0
+text = "Horns"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer"]
+margin_top = 18.0
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLeft" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = "<"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 278.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/HBoxContainer"]
+margin_left = 282.0
+margin_right = 314.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+text = ">"
+
+[node name="LightHorn" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer"]
+margin_top = 54.0
+margin_right = 314.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/LightHorn"]
+margin_top = 3.0
+margin_right = 128.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 128, 0 )
+text = "Light color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/LightHorn"]
+margin_left = 132.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="DarkHorn" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer"]
+margin_top = 78.0
+margin_right = 314.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/DarkHorn"]
+margin_top = 3.0
+margin_right = 128.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 128, 0 )
+text = "Dark color"
+valign = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/DarkHorn"]
+margin_left = 132.0
+margin_right = 314.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+edit_alpha = false
+
+[node name="Colors" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1430.0
+margin_right = 314.0
+margin_bottom = 1502.0
 rect_min_size = Vector2( 0, 72 )
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Colors"]
@@ -1290,5 +1432,3 @@ anchor_bottom = 0.8
 window_title = "Save Portrait"
 access = 2
 filters = PoolStringArray( "*.png ; PNG Images" )
-current_dir = "/home"
-current_path = "/home/"

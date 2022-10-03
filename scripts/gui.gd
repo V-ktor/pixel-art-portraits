@@ -1,7 +1,7 @@
 extends Control
 
 const TYPES = ["Female","Male"]
-const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Beard","Hair/Eyes","Hair/Brows","Hair/Eyes/Glasses","Hair","Hair/Front","BackHair","Hair/Details"]
+const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Beard","Hair/Eyes","Hair/Brows","Hair/Eyes/Glasses","Hair","Hair/Front","BackHair","Hair/Details","Hair/Ears","Hair/Horns"]
 const COLORS = [
 	["#ffe6e2","#996b88","#4c335c"],
 	["#cc8665","#4c335c","#0f0814"],
@@ -20,6 +20,9 @@ const COLORS = [
 const SHADOW_COLORS = [
 	"#2a1722","#22264f","#181420","#4c335c","#0a1a0d"
 ]
+const HORN_COLORS = [
+	"#4b4b60","#22264f","#181420"
+]
 const WHITE_COLOR = "#ffffff"
 const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
@@ -35,6 +38,7 @@ onready var secondary_material: ShaderMaterial = $Viewport/Portrait/Cloths/Secon
 onready var detail_material: ShaderMaterial = $Viewport/Portrait/Cloths/Details.material
 onready var eye_material: ShaderMaterial = $Viewport/Portrait/Hair/Eyes.material
 onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
+onready var horn_material: ShaderMaterial = $Viewport/Portrait/Hair/Horns.material
 
 
 func _randomize():
@@ -64,7 +68,10 @@ func _randomize():
 		"eye_shadow_color":Color(shadow_color),
 		"hair_light_color":Color(COLORS[hair_color][0]),
 		"hair_dark_color":Color(COLORS[hair_color][1]),
-		"hair_shadow_color":Color(COLORS[hair_color][2])
+		"hair_shadow_color":Color(COLORS[hair_color][2]),
+		"horn_light_color":Color(HORN_COLORS[0]),
+		"horn_dark_color":Color(HORN_COLORS[1]),
+		"horn_shadow_color":Color(HORN_COLORS[2]),
 	}
 	
 	for part in PARTS:
@@ -93,6 +100,10 @@ func _randomize():
 	data.brows_offset = randi()%3-1
 	if randf()<0.75:
 		data["Hair/Eyes/Glasses"] = 0
+	if randf()<0.9:
+		data["Hair/Ears"] = 0
+	if randf()<0.9:
+		data["Hair/Horns"] = 0
 	
 	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 		skin_color = 2
@@ -150,6 +161,11 @@ func set_portrait(data: Dictionary):
 	hair_material.set_shader_param("shadow_color", data.hair_shadow_color)
 	hair_material.set_shader_param("white_color", data.white_color)
 	hair_material.set_shader_param("black_color", data.black_color)
+	horn_material.set_shader_param("light_color", data.horn_light_color)
+	horn_material.set_shader_param("dark_color", data.horn_dark_color)
+	horn_material.set_shader_param("shadow_color", data.horn_shadow_color)
+	horn_material.set_shader_param("white_color", data.white_color)
+	horn_material.set_shader_param("black_color", data.black_color)
 	
 	$Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer/Black/ColorPickerButton.color = data.black_color
 	$Panel/ScrollContainer/VBoxContainer/Colors/VBoxContainer/White/ColorPickerButton.color = data.white_color
@@ -161,6 +177,8 @@ func set_portrait(data: Dictionary):
 	$Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/LightHair/ColorPickerButton.color = data.hair_light_color
 	$Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/DarkHair/ColorPickerButton.color = data.hair_dark_color
 	$Panel/ScrollContainer/VBoxContainer/Hair/VBoxContainer/OutlineHair/ColorPickerButton.color = data.hair_shadow_color
+	$Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/LightHorn/ColorPickerButton.color = data.horn_light_color
+	$Panel/ScrollContainer/VBoxContainer/Horns/VBoxContainer/DarkHorn/ColorPickerButton.color = data.horn_dark_color
 	$Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightPrimary/ColorPickerButton.color = data.primary_light_color
 	$Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/DarkPrimary/ColorPickerButton.color = data.primary_dark_color
 	$Panel/ScrollContainer/VBoxContainer/Cloths/VBoxContainer/LightSecondary/ColorPickerButton.color = data.secondary_light_color
@@ -190,6 +208,9 @@ func store_data():
 		"hair_light_color":Color(hair_material.get_shader_param("light_color")),
 		"hair_dark_color":Color(hair_material.get_shader_param("dark_color")),
 		"hair_shadow_color":Color(hair_material.get_shader_param("shadow_color")),
+		"horn_light_color":Color(horn_material.get_shader_param("light_color")),
+		"horn_dark_color":Color(horn_material.get_shader_param("dark_color")),
+		"horn_shadow_color":Color(horn_material.get_shader_param("shadow_color")),
 		"brows_offset":portrait.get_node("Hair/Brows").position.y
 	}
 	# warning-ignore:shadowed_variable

@@ -2,7 +2,7 @@ tool
 extends Sprite
 
 enum Sprites {NONE,SHORT01,MEDIUM01,MEDIUM02,MEDIUM03,LONG01,LONG02,LONG03,
-RIGHT01,CURLY01,PIGTAILS01}
+RIGHT01,CURLY01,PIGTAILS01,PONYTAIL}
 const FILES = {
 	Sprites.SHORT01:"res://images/hair/back/short01.png",
 	Sprites.MEDIUM01:"res://images/hair/back/medium01.png",
@@ -14,6 +14,7 @@ const FILES = {
 	Sprites.RIGHT01:"res://images/hair/back/right01.png",
 	Sprites.CURLY01:"res://images/hair/back/curly01.png",
 	Sprites.PIGTAILS01:"res://images/hair/back/pigtails01.png",
+	Sprites.PONYTAIL:"res://images/hair/back/ponytail.png",
 }
 
 export(Sprites) var sprite:= Sprites.SHORT01 setget set_sprite
