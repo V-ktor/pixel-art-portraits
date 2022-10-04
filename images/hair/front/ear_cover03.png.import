@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat_ears.png-fa445ce9aa1693b048e50995c946c017.stex"
+path="res://.import/ear_cover03.png-00547001999b75d2257646893c087482.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/front/cat_ears.png"
-dest_files=[ "res://.import/cat_ears.png-fa445ce9aa1693b048e50995c946c017.stex" ]
+source_file="res://images/hair/front/ear_cover03.png"
+dest_files=[ "res://.import/ear_cover03.png-00547001999b75d2257646893c087482.stex" ]
 
 [params]
 
