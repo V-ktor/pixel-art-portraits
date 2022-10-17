@@ -104,6 +104,8 @@ func _randomize():
 		data["Hair/Ears"] = 0
 	if randf()<0.9:
 		data["Hair/Horns"] = 0
+	if randf()<0.5:
+		data["Cloths/Neck"] = 0
 	
 	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 		skin_color = 2
@@ -112,9 +114,9 @@ func _randomize():
 		data.skin_shadow_color = Color(COLORS[skin_color][2])
 	
 	buffer_index += 1
-	buffer[buffer_index] = data
 	if buffer_index>BUFFER_SIZE:
 		buffer_index = 0
+	buffer[buffer_index] = data
 	
 	set_portrait(data)
 

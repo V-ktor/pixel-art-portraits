@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eye_patch_left.png-4fd12efea9f2aa1a675531ba24aa1e3d.stex"
+path="res://.import/male08_shadow.png-412f1bcb1e5e9c97fda6acd72bfd1d08.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/glasses/eye_patch_left.png"
-dest_files=[ "res://.import/eye_patch_left.png-4fd12efea9f2aa1a675531ba24aa1e3d.stex" ]
+source_file="res://images/cloths/male08_shadow.png"
+dest_files=[ "res://.import/male08_shadow.png-412f1bcb1e5e9c97fda6acd72bfd1d08.stex" ]
 
 [params]
 

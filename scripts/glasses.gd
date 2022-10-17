@@ -3,7 +3,7 @@ extends Sprite
 
 enum Sprites {NONE,GLASSES01,GLASSES01_REFLECTION,GLASSES02,GLASSES02_REFLECTION,\
 GLASSES03,GLASSES03_REFLECTION,GLASSES04,GLASSES04_REFLECTION,MONOCLE,
-EYE_PATCH_LEFT,EYE_PATCH_RIGHT}
+EYE_PATCH01_LEFT,EYE_PATCH01_RIGHT,EYE_PATCH02_LEFT,EYE_PATCH02_RIGHT}
 const FILES = {
 	Sprites.GLASSES01:"res://images/glasses/glasses01.png",
 	Sprites.GLASSES01_REFLECTION:"res://images/glasses/glasses01_reflection.png",
@@ -14,8 +14,10 @@ const FILES = {
 	Sprites.GLASSES04:"res://images/glasses/glasses04.png",
 	Sprites.GLASSES04_REFLECTION:"res://images/glasses/glasses04_reflection.png",
 	Sprites.MONOCLE:"res://images/glasses/monocle.png",
-	Sprites.EYE_PATCH_LEFT:"res://images/glasses/eye_patch_left.png",
-	Sprites.EYE_PATCH_RIGHT:"res://images/glasses/eye_patch_right.png",
+	Sprites.EYE_PATCH01_LEFT:"res://images/glasses/eye_patch01_left.png",
+	Sprites.EYE_PATCH01_RIGHT:"res://images/glasses/eye_patch01_right.png",
+	Sprites.EYE_PATCH02_LEFT:"res://images/glasses/eye_patch02_left.png",
+	Sprites.EYE_PATCH02_RIGHT:"res://images/glasses/eye_patch02_right.png",
 }
 
 export(Sprites) var sprite:= Sprites.NONE setget set_sprite

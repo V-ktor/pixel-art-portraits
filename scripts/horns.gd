@@ -1,10 +1,11 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,DRAGON01,MASSIVE01,LONG01}
+enum Sprites {NONE,DRAGON01,MASSIVE01,SHORT01,LONG01}
 const FILES = {
 	Sprites.DRAGON01:"res://images/horns/dragon_horns01.png",
 	Sprites.MASSIVE01:"res://images/horns/massive01.png",
+	Sprites.SHORT01:"res://images/horns/short01.png",
 	Sprites.LONG01:"res://images/horns/long01.png",
 }
 

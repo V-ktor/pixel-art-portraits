@@ -1,8 +1,9 @@
 tool
 extends Sprite
 
-enum Sprites {NONE,FEMALE01,FEMALE02,FEMALE03,FEMALE04,FEMALE05,FEMALE06,FEMALE07,FEMALE08,FEMALE09,FEMALE10,FEMALE11,
-	MALE01,MALE02,MALE03,MALE04,MALE05,MALE06,MALE07}
+enum Sprites {NONE,FEMALE01,FEMALE02,FEMALE03,FEMALE04,FEMALE05,FEMALE06,FEMALE07,
+FEMALE08,FEMALE09,FEMALE10,FEMALE11,FEMALE12,
+MALE01,MALE02,MALE03,MALE04,MALE05,MALE06,MALE07,MALE08}
 const Male = Sprites.MALE01
 const Female = Sprites.FEMALE01
 const FILES = {
@@ -17,6 +18,7 @@ const FILES = {
 	Sprites.FEMALE09:"res://images/cloths/female09.png",
 	Sprites.FEMALE10:"res://images/cloths/female10.png",
 	Sprites.FEMALE11:"res://images/cloths/female11.png",
+	Sprites.FEMALE12:"res://images/cloths/female12.png",
 	Sprites.MALE01:"res://images/cloths/male01.png",
 	Sprites.MALE02:"res://images/cloths/male02.png",
 	Sprites.MALE03:"res://images/cloths/male03.png",
@@ -24,6 +26,7 @@ const FILES = {
 	Sprites.MALE05:"res://images/cloths/male05.png",
 	Sprites.MALE06:"res://images/cloths/male06.png",
 	Sprites.MALE07:"res://images/cloths/male07.png",
+	Sprites.MALE08:"res://images/cloths/male08.png",
 }
 
 export(Sprites) var sprite:= Sprites.FEMALE01 setget set_sprite
